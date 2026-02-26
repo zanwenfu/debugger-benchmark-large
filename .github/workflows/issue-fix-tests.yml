@@ -12,9 +12,7 @@ name: Issue Fix Tests
 
 on:
   push:
-    branches: ["*"]
   pull_request:
-    branches: ["*"]
 
 jobs:
   test-issue-fixes:
@@ -28,7 +26,7 @@ jobs:
           python-version: "3.8"
 
       - name: Install pytest (editable)
-        run: pip install -e .
+        run: pip install -e . setuptools-scm
 
       - name: Run issue fix tests
-        run: python -m pytest testing/test_issue_fixes.py -v
+        run: python -m pytest testing/test_issue_fixes.py -v -o "minversion="
