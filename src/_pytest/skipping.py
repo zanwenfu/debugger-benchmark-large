@@ -159,7 +159,8 @@ def pytest_runtest_makereport(item, call):
             else:
                 rep.outcome = "passed"
                 rep.wasxfail = explanation
-    elif (
+
+    if (
         item._store.get(skipped_by_mark_key, True)
         and rep.skipped
         and type(rep.longrepr) is tuple

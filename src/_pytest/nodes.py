@@ -8,6 +8,7 @@ from typing import Optional
 from typing import Set
 from typing import Tuple
 from typing import Union
+from pathlib import Path
 
 import py
 
@@ -347,8 +348,7 @@ class Node(metaclass=NodeMeta):
             truncate_locals = True
 
         try:
-            os.getcwd()
-            abspath = False
+            abspath = Path(os.getcwd()) != Path(str(self.config.invocation_dir))
         except OSError:
             abspath = True
 
